@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 1596psql
+    url: jdbc:postgresql://localhost:5432/db_university
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
