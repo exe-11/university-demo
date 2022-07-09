@@ -24,6 +24,8 @@ public class MarkService implements CRUDService<APIResponse, MarkCreationRequest
 
     protected static final String MARK = "Mark";
 
+    private static final String SUBJECT_NOT_VALID_FOR_USER = "Subject is not in student subject-list";
+
     private final ModelMapper modelMapper;
 
     private final MarkRepository markRepository;
@@ -45,9 +47,9 @@ public class MarkService implements CRUDService<APIResponse, MarkCreationRequest
                         () -> DataNotFoundException.of(STUDENT, markCreationRequest.getStudent())
         );
 
-        final Subject subject = subjectRepository.findById(markCreationRequest.getSubject()).orElseThrow(
-                () -> DataNotFoundException.of(SUBJECT, markCreationRequest.getSubject())
-        );
+        final Subject subject = student.getSubjects().stream()
+                .filter(s -> s.getId() == markCreationRequest.getSubject())
+                .findFirst().orElseThrow(() -> new DataNotFoundException(SUBJECT_NOT_VALID_FOR_USER));
 
         final Mark mark = modelMapper.map(markCreationRequest, Mark.class);
         mark.setStudent(student);

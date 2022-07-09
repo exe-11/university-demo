@@ -23,6 +23,6 @@ public class GroupController extends AbstractCRUDController<GroupService,Long, G
     public ResponseEntity<APIResponse> getGroupDetailsByStudentMarksOrder(
             @PathVariable Long groupId
     ){
-        return ResponseEntity.ok(service.getGroupByStudentMarksOrder(groupId));
+        return ResponseEntity.ok(service.getGroupStudentByMarksOrder(groupId));
     }
 }

@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"pdp\",\r\n    \"address\":\"Tashkent , Sirgali 11-3\",\r\n    \"openYear\":2022\r\n}",
+					"raw": "{\r\n    \"name\":\"mit\",\r\n    \"address\":\"Tashkent , Sirgali 11-4\",\r\n    \"openYear\":2021\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -62,7 +62,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"software-engineering\",\r\n    \"universityId\":1\r\n}",
+					"raw": "{\r\n    \"name\":\"ai\",\r\n    \"university\":1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -91,7 +91,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"b1\",\r\n    \"year\":2022,\r\n    \"faculty\":1\r\n}",
+					"raw": "{\r\n    \"name\":\"b4\",\r\n    \"year\":2022,\r\n    \"faculty\":1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -120,7 +120,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"b1\",\r\n    \"year\":2022,\r\n    \"faculty\":1\r\n}",
+					"raw": "{\r\n    \"name\":\"c++\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -128,7 +128,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/group",
+					"raw": "http://localhost:8080/api/subject",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -136,20 +136,20 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"group"
+						"subject"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "student-create",
+			"name": "student-create-0",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"abdulaziz\",\r\n    \"group\":1\r\n}",
+					"raw": "{\r\n    \"name\":\"abdulaziz\",\r\n    \"subjects\":[1,2],\r\n    \"group\":1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -166,6 +166,287 @@
 					"path": [
 						"api",
 						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student-create-1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"alisher\",\r\n    \"subjects\":[1,2],\r\n    \"group\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/student",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student-create-2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"jamshid\",\r\n    \"subjects\":[1,2],\r\n    \"group\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/student",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mark-add-to-student-0",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\":90,\r\n    \"subject\":2,\r\n    \"student\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/mark",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"mark"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mark-add-to-student-1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\":70,\r\n    \"subject\":1,\r\n    \"student\":2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/mark",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"mark"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mark-add-to-student-2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\":76,\r\n    \"subject\":1,\r\n    \"student\":3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/mark",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"mark"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "facult-groups-all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subjects\":[1,2,3]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/faculty/groups/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"faculty",
+						"groups",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student-subjects-by-id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subjects\":[1,2,3]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/student/subs/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"student",
+						"subs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student-details-by-name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subjects\":[1,2,3]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/student/details/abdulaziz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"student",
+						"details",
+						"abdulaziz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "group-details-order-by-sdunent-mark",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subjects\":[1,2,3]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/group/details/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"group",
+						"details",
+						"1"
 					]
 				}
 			},

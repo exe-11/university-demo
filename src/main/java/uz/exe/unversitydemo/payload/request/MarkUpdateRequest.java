@@ -8,5 +8,5 @@ import uz.exe.unversitydemo.service.core.Modifiable;
 @Getter
 @Setter
 public class MarkUpdateRequest implements Modifiable {
-    private double averageMark;
+    private int value;
 }

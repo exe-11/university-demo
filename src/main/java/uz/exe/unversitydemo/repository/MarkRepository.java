@@ -6,4 +6,5 @@ import uz.exe.unversitydemo.entity.Mark;
 
 @Repository
 public interface MarkRepository extends JpaRepository<Mark,Long> {
+
 }

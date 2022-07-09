@@ -14,23 +14,32 @@ import java.util.List;
 public class Student extends BaseEntity {
     private String name;
 
-    @OneToMany
-    private List<Subject> subjects = new LinkedList<>();
+    @ManyToMany
+    private List<Subject> subjects;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "group_id")
     private Group group;
 
     private int averageMark;
 
     @JsonIgnore
-    @OneToMany
-    private List<Mark> marks = new LinkedList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+    private List<Mark> marks;
 
     public double getAverageMark() {
-        if (marks.size() > 0) {
+        if (marks != null && marks.size()>0) {
             int total = marks.stream().reduce(0, (acc, mark) -> acc + mark.getValue(), Integer::sum);
             return total / marks.size();
         }
         return 0;
+    }
+
+    public void setAverageMark(int averageMark) {
+        int total = 0;
+        if (marks != null && marks.size()>0) {
+            total = marks.stream().reduce(0, (acc, mark) -> acc + mark.getValue(), Integer::sum);
+            this.averageMark = total / marks.size();
+        }
     }
 }

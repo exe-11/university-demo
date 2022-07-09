@@ -6,6 +6,8 @@ import lombok.Setter;
 import uz.exe.unversitydemo.service.core.Creatable;
 import uz.exe.unversitydemo.service.core.Modifiable;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class GroupRequest implements Creatable, Modifiable {
@@ -14,4 +16,5 @@ public class GroupRequest implements Creatable, Modifiable {
     private int year;
 
     private long faculty;
+
 }

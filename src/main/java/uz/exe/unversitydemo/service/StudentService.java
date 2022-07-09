@@ -37,21 +37,22 @@ public class StudentService implements CRUDService<APIResponse, StudentRequest, 
         this.groupRepository = groupRepository;
     }
 
-    public APIResponse getSubjects(Long userId){
+    public APIResponse getSubjects(Long userId) {
         final Student student = studentRepository.findById(userId).orElseThrow(
                 () -> DataNotFoundException.of(STUDENT, userId)
         );
         return APIResponse.success(student.getSubjects());
     }
 
-    public APIResponse getStudentByName(String name){
-        return APIResponse.success(studentRepository.findAllByName(name));
+    public APIResponse getStudentByName(String name) {
+        final List<Student> students = studentRepository.findAllByName(name);
+        return APIResponse.success(students.toArray());
     }
 
     @Override
     public APIResponse create(StudentRequest studentRequest) {
-        List<Subject> subjects = subjectRepository.findAllById(studentRequest.getSubjects());
         final Group group = groupRepository.findById(studentRequest.getGroup()).orElseThrow(() -> DataNotFoundException.of(FACULTY, studentRequest.getGroup()));
+        final List<Subject> subjects = subjectRepository.findAllById(studentRequest.getSubjects());
         final Student student = modelMapper.map(studentRequest, Student.class);
         student.setGroup(group);
         student.setSubjects(subjects);
@@ -71,13 +72,12 @@ public class StudentService implements CRUDService<APIResponse, StudentRequest, 
 
     @Override
     public APIResponse modify(Long identity, StudentRequest studentRequest) {
-
-        final Group group = groupRepository.findById(studentRequest.getGroup()).orElseThrow(() -> DataNotFoundException.of(FACULTY, studentRequest.getGroup()));
-        final Student student = modelMapper.map(studentRequest, Student.class);
-        student.setGroup(group);
+        final Student student = studentRepository.findById(identity).orElseThrow(
+                () -> DataNotFoundException.of(STUDENT, identity));
         modelMapper.map(studentRequest, student);
         try {
             studentRepository.save(student);
+
         } catch (Exception exception) {
             return APIResponse.error(exception.getMessage(), HttpStatus.CONFLICT);
         }

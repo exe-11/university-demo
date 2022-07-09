@@ -1,6 +1,7 @@
 package uz.exe.unversitydemo.component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
@@ -15,15 +16,17 @@ public class AppComponents {
 
     @Bean
     public ModelMapper modelMapper(){
-        ModelMapper modelMapper = new ModelMapper();
-//        modelMapper.getConfiguration().setSkipNullEnabled(true);
-//        modelMapper.getConfiguration().setAmbiguityIgnored(true);
-
+        final ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setSkipNullEnabled(true);
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         return modelMapper;
     }
 
     @Bean
     public ObjectMapper objectMapper(){
-        return new ObjectMapper().registerModule(new JavaTimeModule());
+
+        final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
+        objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS,false);
+        return objectMapper;
     }
 }

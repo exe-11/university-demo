@@ -11,5 +11,5 @@ import java.util.List;
 public interface StudentRepository extends JpaRepository<Student, Long> {
     List<Student> findAllByName(String name);
 
-    List<Student> findStudentsByGroup_IdOrderByAverageMarkDesc(Long groupId);
+    List<Student> findStudentsByGroup_Id(Long groupId);
 }

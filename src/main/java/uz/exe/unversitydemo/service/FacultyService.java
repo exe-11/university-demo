@@ -9,6 +9,7 @@ import uz.exe.unversitydemo.entity.University;
 import uz.exe.unversitydemo.exception.DataNotFoundException;
 import uz.exe.unversitydemo.payload.APIResponse;
 import uz.exe.unversitydemo.payload.request.FacultyRequest;
+import uz.exe.unversitydemo.payload.response.FacultyGroupResponse;
 import uz.exe.unversitydemo.repository.FacultyRepository;
 import uz.exe.unversitydemo.repository.GroupRepository;
 import uz.exe.unversitydemo.repository.UniversityRepository;
@@ -42,8 +43,9 @@ public class FacultyService implements CRUDService<APIResponse, FacultyRequest, 
         if (!facultyRepository.existsById(facultyId)) {
             throw DataNotFoundException.of(FACULTY, facultyId);
         }
-        List<Group> groups = groupRepository.findGroupsByFaculty_Id(facultyId);
-        return APIResponse.success(groups);
+        final List<Group> groups = groupRepository.findGroupsByFaculty_Id(facultyId);
+        final List<FacultyGroupResponse> responses = List.of(modelMapper.map(groups, FacultyGroupResponse[].class));
+        return APIResponse.success(responses);
     }
 
     @Override

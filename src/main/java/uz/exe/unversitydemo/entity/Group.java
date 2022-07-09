@@ -5,8 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.LinkedList;
+import java.util.HashSet;
 import java.util.List;
+
 
 @Getter
 @Setter
@@ -18,18 +19,20 @@ public class Group extends BaseEntity{
 
     private int year;
 
+    @Column(nullable = false,columnDefinition = "integer default 0")
     private int studentsCount;
 
     @ManyToOne
     private Faculty faculty;
 
-//    @JsonIgnore
-    @OneToMany
-    private List<Student> students = new LinkedList<>();
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
+    private List<Student> students;
 
     public int getStudentsCount() {
-        return this.students.size();
+        return this.students != null ? this.students.size() : 0;
     }
+
 
 
 }

@@ -9,7 +9,7 @@ import uz.exe.unversitydemo.service.core.Modifiable;
 @Getter
 @Setter
 public class MarkCreationRequest implements Creatable {
-    private double averageMark;
+    private int value;
 
     private long student;
 
